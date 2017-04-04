@@ -1,28 +1,36 @@
 class Agent {
   PVector basePoint;
-  PVector p1, p2, p3, midPoint;
   float offSet;
-  float xAvg, yAvg;
-  Agent(PVector _basePoint, float _offSet) {
-    basePoint = new PVector();
+  pointAgent vertices[];
+  Agent target;
+  
+  Agent(PVector _basePoint, float _offset) {
     basePoint = _basePoint;
-    offSet = _offSet;
+    offSet = _offset;
     init();
   }
   void init() {
-    p1 = new PVector(basePoint.x - offSet, basePoint.y - offSet);
+    vertices = new pointAgent[3];
+    vertices[0] = new pointAgent(basePoint.x, basePoint.y - offSet);
+    vertices[1] = new pointAgent(basePoint.x - offSet, basePoint.y + offSet);
+    vertices[2] = new pointAgent(basePoint.x + offSet, basePoint.y + offSet);
+  }
 
-    p2 = new PVector(basePoint.x, basePoint.y + offSet);
-
-    p3 = new PVector(basePoint.x + offSet, basePoint.y - offSet);
-    xAvg = (p1.x + p2.x + p3.x) / 3;
-    yAvg = (p1.y + p2.y + p3.y) / 3;
-    midPoint = new PVector(xAvg, yAvg);
+  void display() {
+    for (int i = 0; i < vertices.length; i++) {
+      line(vertices[i].x, vertices[i].y, basePoint.x, basePoint.y);
+    }
   }
   
-  void display() {
-    line(p1.x,p1.y,midPoint.x,midPoint.y);
-    line(p2.x,p2.y,midPoint.x,midPoint.y);
-    line(p3.x,p3.y,midPoint.x,midPoint.y);
+  void findTarget(Agent[] array) {
+    for (int i = 0; i < vertices.length; i++) {
+      vertices[i].findTargetPoint(array);
+    }
+  }
+  
+  void moveToTarget(Agent[] array) {
+    for (int i = 0; i < array.length; i++) {
+      
+    }
   }
 }
