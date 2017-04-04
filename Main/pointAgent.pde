@@ -14,13 +14,13 @@ class pointAgent {
     y = 5000;
   }
 
-  void findTargetPoint(Agent[] array) {
+  void findTargetPoint(Agent[] array, int currentIndex) {
     pointAgent currentTarget = new pointAgent();
     for (int i = 0; i < array.length; i++) {
       for (int j = 0; j < array[i].vertices.length; j++) {
-        if (currentTarget.x == 5000 && currentTarget.y == 5000) {
+        if (currentTarget.x == 5000 && currentTarget.y == 5000 && i != currentIndex) {
           currentTarget = array[i].vertices[j];
-        } else if (dist(x, y, array[i].vertices[j].x, array[i].vertices[j].y) < dist(x, y, currentTarget.x, currentTarget.y) && dist(x, y, array[i].vertices[j].x, array[i].vertices[j].y) != 0) {
+        } else if (dist(x, y, array[i].vertices[j].x, array[i].vertices[j].y) < dist(x, y, currentTarget.x, currentTarget.y) && dist(x, y, array[i].vertices[j].x, array[i].vertices[j].y) != 0 && i != currentIndex) {
           currentTarget = array[i].vertices[j];
         }
       }

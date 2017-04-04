@@ -19,14 +19,14 @@ class Agent {
   void display() {
     for (int i = 0; i < vertices.length; i++) {
       PVector average = new PVector((vertices[0].x + vertices[1].x + vertices[2].x) / 3, (vertices[0].y + vertices[1].y + vertices[2].y) / 3);
-      stroke(30,20,55,55);
+      stroke(200,200,200);
       line(vertices[i].x, vertices[i].y, average.x, average.y);
     }
   }
 
-  void findTarget(Agent[] array) {
+  void findTarget(Agent[] array, int currentIndex) {
     for (int i = 0; i < vertices.length; i++) {
-      vertices[i].findTargetPoint(array);
+      vertices[i].findTargetPoint(array, currentIndex);
     }
   }
 
