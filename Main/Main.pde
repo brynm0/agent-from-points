@@ -11,7 +11,15 @@ void setup () {
 }
 
 void draw () {
-  for (Agent a : agentArray) {
-    a.display();
+  //background(51);
+  //for (Agent a : agentArray) {
+  //  a.findTarget(agentArray);
+  //  a.moveToTarget();
+  //  a.display();
+  //}
+  for (int i = 0; i < agentArray.length; i++) {
+    agentArray[i].findTarget(agentArray);
+    agentArray[i].moveToTarget();
+    agentArray[i].display();
   }
 }
